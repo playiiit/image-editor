@@ -107,8 +107,8 @@ const sendStatusToWindow = (text) => {
   try {
     writeLog(text);
     log.info(text);
-    if (mainWindow) {
-      mainWindow.webContents.send("message", text);
+    if (createWindow) {
+      createWindow.webContents.send("message", text);
     }
   } catch (error) {
     writeLog(error);
