@@ -3,12 +3,12 @@ const ipc = ipcMain;
 const PowerShell = require("powershell");
 const fs = require("fs");
 const { autoUpdater } = require("electron-updater");
-const log = require('electron-log');
+const log = require("electron-log");
 
 // configure logging
 autoUpdater.logger = log;
-autoUpdater.logger.transports.file.level = 'info';
-log.info('App starting...');
+autoUpdater.logger.transports.file.level = "info";
+log.info("App starting...");
 
 const createWindow = async () => {
   const win = new BrowserWindow({
@@ -98,43 +98,65 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
     app.allowRendererProcessReuse = false;
   });
-
 });
 
 //-------------------------------------------------------------------
 // Auto updates
 //-------------------------------------------------------------------
 const sendStatusToWindow = (text) => {
-  log.info(text);
-  if (mainWindow) {
-    mainWindow.webContents.send('message', text);
+  try {
+    writeLog(text);
+    log.info(text);
+    if (mainWindow) {
+      mainWindow.webContents.send("message", text);
+    }
+  } catch (error) {
+    writeLog(error);
   }
 };
 
-autoUpdater.on('checking-for-update', () => {
-  sendStatusToWindow('Checking for update...');
+autoUpdater.on("checking-for-update", () => {
+  sendStatusToWindow("Checking for update...");
 });
-autoUpdater.on('update-available', info => {
-  sendStatusToWindow('Update available.');
+autoUpdater.on("update-available", (info) => {
+  sendStatusToWindow("Update available.");
 });
-autoUpdater.on('update-not-available', info => {
-  sendStatusToWindow('Update not available.');
+autoUpdater.on("update-not-available", (info) => {
+  sendStatusToWindow("Update not available.");
 });
-autoUpdater.on('error', err => {
+autoUpdater.on("error", (err) => {
   sendStatusToWindow(`Error in auto-updater: ${err.toString()}`);
 });
-autoUpdater.on('download-progress', progressObj => {
+autoUpdater.on("download-progress", (progressObj) => {
   sendStatusToWindow(
     `Download speed: ${progressObj.bytesPerSecond} - Downloaded ${progressObj.percent}% (${progressObj.transferred} + '/' + ${progressObj.total} + )`
   );
 });
-autoUpdater.on('update-downloaded', info => {
-  sendStatusToWindow('Update downloaded; will install now');
+autoUpdater.on("update-downloaded", (info) => {
+  sendStatusToWindow("Update downloaded; will install now");
 });
 
-autoUpdater.on('update-downloaded', info => {
+autoUpdater.on("update-downloaded", (info) => {
   // Wait 5 seconds, then quit and install
   // In your application, you don't need to wait 500 ms.
   // You could call autoUpdater.quitAndInstall(); immediately
   autoUpdater.quitAndInstall();
 });
+
+
+function writeLog(data) {
+  try {
+    fs.writeFile(
+      "C:UsersTigEr_MPimage-editorlog.txt",
+      data,
+      (err) => {
+        if (err) {
+          console.error(err);
+        }
+        // file written successfully
+      }
+    );
+  } catch (err) {
+    console.error(err);
+  }
+}

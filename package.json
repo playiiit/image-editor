@@ -4,7 +4,7 @@
   "description": "Image Editor",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tiger5553/image-editor.git"
+    "url": "https://github.com/playiiit/image-editor.git"
   },
   "publish": {
     "provider": "github",
