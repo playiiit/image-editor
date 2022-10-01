@@ -1,0 +1,36 @@
+.footer-loading-progress-txt-box {
+    margin-right: 8px;
+    margin-bottom: 3px;
+}
+
+.footer-loading-progress-txt {
+    color: var(--textSubColor);
+    font-size: 12px;
+}
+
+.footer-loading-progress {
+    width: 180px;
+    max-width: 180px;
+    margin-right: 10px;
+    height: 5px;
+    background: #e1e4e8;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.footer-loading-progress-bar {
+    display: block;
+    height: 100%;
+    background: var(--loadingProgressBar);
+    background-size: 300% 100%;
+    animation: progress-animation 2s linear infinite;
+}
+
+@keyframes progress-animation {
+    0% {
+        background-position: 100%;
+    }
+    100% {
+        background-position: 0;
+    }
+}

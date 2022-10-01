@@ -1,0 +1,60 @@
+:root {
+    --artBoard: #ffffff;
+    --mainColor: #111111;
+    --customizeNav: #24292E;
+    --navigateColor: #34383e;
+    --leftNavBar: #14161a;
+    --subColor: #1a1e2f;
+    --textSubColor: #566079;
+    --buttonTextColor: #ffffff;
+    --chooserText: #ffffff;
+    --chooserTextHover: #ffffff;
+    --background: #24292E;
+    --backgroundSettings: #16191d;
+    --white: #ffffff;
+    --border: #32373b;
+    --selectorBackground: #111111;
+    --highlight: linear-gradient(180deg, #7169ff, #554cff);
+    --highlightText: #554cff;
+    --highlightHover: linear-gradient(180deg, #655bff, #4b42ff);
+    --highlightBorder: #554cff;
+    --highlightLow: #847eff;
+    --previewBtn: linear-gradient(180deg, #ff9a66, #ff7321);
+    --previewBtnHover: linear-gradient(180deg, #ff8546, #ff5e00);
+    --loadingProgressBar: linear-gradient(90deg, #554cff, #847eff 17%, #554cff 34%, #847eff 51%, #554cff 68%, #847eff 85%, #554cff);
+    --error: #ff0000;
+    --shadowRed: #ff4b4b;
+    --success: #00fa8c;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([theme="light"]) {
+        --artBoard: #ffffff;
+        --mainColor: #ffffff;
+        --customizeNav: #f1f1f1;
+        --navigateColor: #cccccc;
+        --leftNavBar: #f9f9f9;
+        --subColor: #cccccc;
+        --textSubColor: #566079;
+        --buttonTextColor: #ffffff;
+        --chooserText: #333333;
+        --chooserTextHover: #ffffff;
+        --background: #eeeeee;
+        --backgroundSettings: #eeeeee;
+        --white: #333333;
+        --border: #dddddd;
+        --selectorBackground: #f1f1f1;
+        --highlight: linear-gradient(180deg, #7169ff, #554cff);
+        --highlightHover: linear-gradient(180deg, #655bff, #4b42ff);
+        --highlightBorder: #554cff;
+        --highlightLow: #847eff;
+        --previewBtn: linear-gradient(180deg, #ffaf85, #ff9357);
+        --previewBtnHover: linear-gradient(180deg, #ff9a66, #ff7321);
+        --loadingProgressBar: linear-gradient(90deg, #554cff, #847eff 17%, #554cff 34%, #847eff 51%, #554cff 68%, #847eff 85%, #554cff);
+        --error: #ff0000;
+        --shadowRed: #ff4b4b;
+        --success: #00fa8c;
+    }
+}
+
+/*554CFF*/

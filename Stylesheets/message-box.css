@@ -1,0 +1,69 @@
+/*-----------------------
+- Message Box
+--------------------------*/
+.message-box {
+    position: fixed;
+    bottom: 0px;
+    left: -100%;
+    z-index: 1111;
+}
+
+.message-box-inner {
+    max-width: 300px;
+    background-color: var(--error);
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Animation Message */
+.animation-view {
+    animation-name: animation-view;
+    animation-duration: 0s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animation-view {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 1%;
+    }
+}
+
+.animation-hide {
+    animation-name: animation-hide;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animation-hide {
+    0% {
+        left: 1%;
+    }
+    100% {
+        left: -100%;
+    }
+}
+
+.message-box-left {
+    margin-right: 10px;
+}
+
+.message-box-icon-holder {
+    width: 25px;
+    height: 25px;
+}
+
+.message-box-error-type {
+    color: var(--buttonTextColor);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.message-box-error {
+    color: var(--buttonTextColor);
+    font-size: 12px;
+    font-weight: 500;
+}

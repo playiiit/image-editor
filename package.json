@@ -1,0 +1,46 @@
+{
+  "name": "image-editor",
+  "version": "1.0.0",
+  "description": "Image Editor",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tiger5553/image-editor.git"
+  },
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "publish": ""
+  },
+  "author": "Chethana Perera",
+  "license": "ISC",
+  "dependencies": {
+    "@electron/remote": "^2.0.8",
+    "aspect-ratio": "^2.1.1",
+    "aspectratio": "^2.2.2",
+    "electron-log": "^4.4.8",
+    "electron-updater": "^5.2.1",
+    "fs": "0.0.1-security",
+    "image-size": "^1.0.2",
+    "jimp": "^0.16.1",
+    "powershell": "^2.3.2",
+    "update-electron-app": "^2.0.1"
+  },
+  "devDependencies": {
+    "electron": "^20.1.4",
+    "electron-builder": "^23.3.3",
+    "electron-packager": "^16.0.0"
+  },
+  "build": {
+    "appId": "com.imageeditor.quickstart",
+    "win": {
+      "target": "nsis",
+      "icon": ""
+    }
+  }
+}

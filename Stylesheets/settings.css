@@ -1,0 +1,148 @@
+.settings {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    /*background: rgba(0, 0, 0, 0.7);*/
+    z-index: 1111;
+}
+
+.settings-box {
+    width: 600px;
+    height: 400px;
+    background: var(--backgroundSettings);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.4);
+}
+
+.settings-box-left {
+    width: 30%;
+    height: 100%;
+    padding: 15px;
+    background: var(--mainColor);
+}
+
+.settings-main-title-box {
+    margin-bottom: 15px;
+}
+
+.settings-main-title {
+    color: var(--white);
+    font-size: 20px;
+}
+
+.settings-navigation-menu-item {
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 3px;
+}
+
+.settings-navigation-menu-item-select {
+    background: var(--highlight);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
+}
+
+.settings-navigation-menu-item-select .settings-navigation-menu-item-name {
+    color: var(--buttonTextColor);
+}
+
+.settings-navigation-menu-item-icon-box {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+
+.settings-navigation-menu-item-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.settings-navigation-menu-item-name {
+    color: var(--white);
+    font-size: 13px;
+}
+
+/* Settings Close Box Style */
+.settings-close-main {
+    position: absolute;
+    margin-left: 350px;
+    margin-top: -5px;
+}
+
+.settings-close-icon-box {
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    background: var(--selectorBackground);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Appearance Section */
+.settings-box-right {
+    width: 70%;
+    padding: 15px;
+}
+
+.settings-box-data-holder-title {
+    color: var(--white);
+    font-size: 15px;
+}
+
+.settings-box-data-holder-section-data {
+    margin-top: 8px;
+}
+
+.settings-box-data-holder-sub-title-box {
+    margin-bottom: 5px;
+}
+
+.settings-box-data-holder-sub-title {
+    color: var(--textSubColor);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.settings-box-data-holder-section-button-group {
+    margin-top: 10px;
+}
+
+/* ------ Account Details Section ------ */
+.settings-box-data-holder-section-body {
+    margin-top: 15px;
+}
+
+.settings-account-profile-box {
+    width: 75px;
+    height: 75px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+.settings-account-profile-img {
+    width: 100%;
+    height: 100%;
+}
+
+.settings-account-profile-uploader-box {
+    margin-bottom: 5px;
+}
+
+.settings-account-profile-uploader {
+    padding: 5px 12px;
+    border-radius: 5px;
+    background: var(--highlight);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--buttonTextColor);
+    cursor: pointer;
+}
+
+.settings-account-profile-uploader-txt {
+    font-size: 13px;
+    color: var(--textSubColor);
+}

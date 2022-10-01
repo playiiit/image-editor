@@ -1,0 +1,70 @@
+/* ----- Header ------ */
+.header {
+    width: 100%;
+    height: auto;
+    background-color: var(--mainColor);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 11111;
+}
+
+.sub-header {
+    padding: 0px 0px;
+}
+
+.header-left {
+    width: 100%;
+    margin-right: auto;
+    margin-left: 10px;
+    -webkit-app-region: drag;
+}
+
+.header-middle {
+    margin-right: auto;
+    margin-left: auto;
+    -webkit-app-region: drag;
+}
+
+.header-right {
+    margin-left: auto;
+    -webkit-user-select: none;
+}
+
+.header-file-name {
+    color: var(--textSubColor);
+    font-size: 12px;
+}
+
+.header-logo-img-box {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+.header-logo-img {
+    width: 100%;
+    height: 100%;
+}
+
+.header-logo-txt {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.header-frame-control-img-box {
+    width: 16px;
+    height: 16px;
+    padding: 6px 8px;
+    cursor: pointer;
+}
+
+.header-frame-control-img-box:hover {
+    background: var(--subColor);
+}
+
+.header-frame-control-img {
+    width: 100%;
+}

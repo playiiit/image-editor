@@ -1,0 +1,109 @@
+.login-container {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../Assets/Login-Background.png");
+    background-size: cover;
+}
+
+.login-sub-container {
+    height: 100%;
+}
+
+.login-form-main {
+    width: 300px;
+    padding: 20px;
+    background: var(--mainColor);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.login-form-head {
+    width: 100%;
+    text-align: center;
+}
+
+.login-form-logo-box {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 10px;
+    background: var(--white);
+    margin: auto;
+}
+
+.login-form-logo {
+    width: 100%;
+}
+
+.login-form-title-box {
+    padding: 5px 0px;
+}
+
+.login-form-title {
+    color: var(--white);
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.login-form-sub-title {
+    color: var(--textSubColor);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+}
+
+.login-form-body {
+    padding: 15px 0px 5px 0px;
+    box-sizing: border-box;
+}
+
+.field-box-holder {
+    margin-bottom: 8px;
+}
+
+.form-field-label-box {
+    margin-bottom: 3px;
+}
+
+.field-login-form {
+    height: 40px;
+}
+
+.form-field-label {
+    color: var(--textSubColor);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.login-btn-css {
+    width: 100%;
+}
+
+.login-form-footer-toggle-action {
+    margin-top: 12px;
+}
+
+.login-form-footer-toggle-left {
+    margin-right: auto;
+}
+
+login-form-footer-toggle-right {
+    margin-left: auto;
+}
+
+.login-form-forget-link {
+    color: var(--textSubColor);
+    font-size: 12px;
+    transition: 0.3s;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.login-form-forget-link:hover {
+    color: var(--highlight);
+}
+
+.field-box-button-group {
+    margin-top: 12px;
+}
