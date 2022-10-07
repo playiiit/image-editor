@@ -13,10 +13,10 @@ let choosePath = "";
 let currentFileDimension = { width: 0, height: 0 };
 
 /*
-* Drag and Drop Upload Image
-*/
-const dropContainer = ByID('resources_file_path_uploader_drop_container');
-const uploader_com = ByID('resources_file_path_uploader_label');
+ * Drag and Drop Upload Image
+ */
+const dropContainer = ByID("resources_file_path_uploader_drop_container");
+const uploader_com = ByID("resources_file_path_uploader_label");
 
 dropContainer.ondragover = dropContainer.ondragenter = function (evt) {
   evt.preventDefault();
@@ -29,16 +29,15 @@ dropContainer.ondragleave = function (evt) {
 };
 
 /*
-* Ondrop Listener
-*/
+ * Ondrop Listener
+ */
 dropContainer.ondrop = function (evt) {
   evt.preventDefault();
   // Change the Drop Container Border Color
   dropContainer.style.border = "1.5px dashed var(--border)";
 
   setImage(evt.dataTransfer.files);
-}
-
+};
 
 /**
  *  Upload File
@@ -105,7 +104,7 @@ ByID("output_file_path_uploader").addEventListener("click", async (e) => {
  * When click on save button path.basename(data[0].name, path.extname(data[0].name))
  */
 ByID("generate_button").addEventListener("click", async (e) => {
-  if (choosePath != "") { 
+  if (choosePath != "") {
     // Disable button
     ByID("generate_button").disabled = true;
 
@@ -124,15 +123,18 @@ ByID("generate_button").addEventListener("click", async (e) => {
           files,
           ".jpeg",
           { width: fileWidth, height: fileHeight },
-          __dirname + "\\Temp",
-          fileName, fileQuality
+          __dirname + "\\Temp\\Files",
+          fileName,
+          fileQuality
         );
 
         // Check if any error
         if (tempPath.error == null) {
           let ps = new PowerShell(
-            getWebpCommand(files, tempPath.path, fileName, fileQuality)
+            await getWebpCommand(files, tempPath.path, fileName, fileQuality)
           );
+
+          console.log(ps);
 
           ps.on("end", (code) => {
             console.log(code);
@@ -155,7 +157,8 @@ ByID("generate_button").addEventListener("click", async (e) => {
           fileExt,
           { width: fileWidth, height: fileHeight },
           choosePath,
-          fileName, fileQuality
+          fileName,
+          fileQuality
         );
         if (returnData.error) {
           console.log(returnData.error);
@@ -188,9 +191,22 @@ ByID("generate_button").addEventListener("click", async (e) => {
  * @returns
  */
 function getWebpCommand(data, filePath, fileName, fileQuality) {
-  return (
-    "cwebp -q " + fileQuality + " " + filePath + " -o " + choosePath + "\\" + fileName + ".webp"
-  );
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(
+        "cd C:\\Users\\TigEr_MP\\image-editor-new\\image-editor\\Webp; " +
+          "cwebp -q " +
+          fileQuality +
+          " " +
+          filePath +
+          " -o " +
+          choosePath +
+          "\\" +
+          fileName +
+          ".webp"
+      );
+    }, 0);
+  });
 }
 
 /**
@@ -202,7 +218,14 @@ function getWebpCommand(data, filePath, fileName, fileQuality) {
  * @param {*} dirPath
  * @returns
  */
-async function executeJimp(data, fileExtension, dimension, dirPath, fileName, fileQuality) {
+async function executeJimp(
+  data,
+  fileExtension,
+  dimension,
+  dirPath,
+  fileName,
+  fileQuality
+) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       Jimp.read(data[0].path, (err, image) => {
@@ -263,8 +286,8 @@ function automaticScale(value, event) {
   }
 }
 
-  // Listen for messages
-ipcRenderer.on('message', function (event, text) {
-  console.log('Message from updater:', text);
+// Listen for messages
+ipcRenderer.on("message", function (event, text) {
+  console.log("Message from updater:", text);
   console.log(event);
 });
