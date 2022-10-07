@@ -7,6 +7,7 @@
     <meta content="worker-src blob:; child-src blob: gap:; img-src 'self' blob: data:; default-src 'self';frame-src 'unsafe-inline' 'self' none:;script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src * 'unsafe-inline'"
           http-equiv="Content-Security-Policy">
     <link href="./Stylesheets/colors.css" rel="stylesheet">
+    <link href="./Font/style.css" rel="stylesheet">
     <link href="./Stylesheets/header.css" rel="stylesheet">
     <link href="./Stylesheets/message-box.css" rel="stylesheet">
     <link href="./Stylesheets/checkbox-style.css" rel="stylesheet">
@@ -121,6 +122,10 @@
                         <!-- Preview Area -->
                         <div class="body-content-preview-area" id="preview-area-set"></div>
                     </div>
+                                            <!-- App Version -->
+                                            <div class="app-version-box">
+                                                <span class="app-version-label" id="app-version-label"></span>
+                                            </div>
                 </div>
             </div>
             <!-- Right Sidebar Main Container-->
@@ -194,8 +199,7 @@
                                                        placeholder="Output Folder Path" readonly type="text" value="">
                                                 <label class="resources_file_path_uploader_class display-flex-static"
                                                        id="output_file_path_uploader">
-                                                    <img alt="" class="resources_file_path_uploader_icon"
-                                                         src="./Assets/Uploader-Icon-White.svg">
+                                                         <div class="resources_file_path_uploader_icon icon-Uploader-Icon-White"></div>
                                                     <span>CHOOSE</span>
                                                 </label>
                                             </div>

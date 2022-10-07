@@ -97,6 +97,17 @@ div::-webkit-scrollbar-thumb {
   border: 3px solid transparent;
 }
 
+/*------ App Version ------*/
+.app-version-box{
+  position: fixed;
+  bottom: 10px;
+}
+
+.app-version-label{
+  color: var(--appVersion);
+  font-size: 12px;
+  font-weight: 600;
+}
 /*------ Body Main Container ------*/
 .body-content-sub {
   width: 100%;
@@ -444,13 +455,17 @@ div::-webkit-scrollbar-thumb {
   color: var(--chooserTextHover);
 }
 
+.resources_file_path_uploader_class:hover .icon-Uploader-Icon-White:before{
+  background: var(--highlight);
+  color: var(--artBoard);
+}
+
 .fields-icons-svg:hover {
   fill: var(--chooserTextHover);
 }
 
 .resources_file_path_uploader_icon {
-  width: 15px;
-  height: 15px;
+  font-size: 16px;
   margin-right: 8px;
 }
 

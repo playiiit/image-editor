@@ -29,6 +29,8 @@
     --dark: #28292c;
     --link: rgb(27, 129, 112);
     --link-hover: rgb(24, 94, 82);
+    --uploadIcon: #b5b5b6;
+    --appVersion: #696b79;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -58,6 +60,8 @@
         --error: #ff0000;
         --shadowRed: #ff4b4b;
         --success: #00fa8c;
+        --uploadIcon: #919498;
+        --appVersion: #bfbfbf;
     }
 }
 

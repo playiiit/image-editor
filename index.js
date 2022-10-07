@@ -1,11 +1,12 @@
 const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const ipc = ipcMain;
-const PowerShell = require("powershell");
 const path = require("path");
 const log = require("electron-log");
 
+/* Config Log Options */
 log.transports.file.getFile().path = __dirname + "\\main.log";
-log.transports.file.format = "[{y}-{m}-{d} {h}:{i}:{s}.{ms}] [{level}]{scope} {text}";
+log.transports.file.format =
+  "[{y}-{m}-{d} {h}:{i}:{s}.{ms}] [{level}]{scope} {text}";
 
 const createWindow = async () => {
   const win = new BrowserWindow({
@@ -66,24 +67,6 @@ const createWindow = async () => {
         event.returnValue = { state: false, pathGet: null, error: err };
       });
   });
-
-  /*
-   * Set Envirament Variable
-   * */
-  try {
-    if (!process.env.CwebpPath) {
-      let ps = new PowerShell("$env:CwebpPath=" + __dirname + "\\Webp");
-      log.info(__dirname + "\\Webp" + " Variable Added");
-
-      ps.on("end", (code) => {
-        log.info(code);
-      });
-    } else {
-      log.info("Already set " + process.env.CwebpPath);
-    }
-  } catch (error) {
-    log.error(error);
-  }
 };
 
 app.on("window-all-closed", () => {

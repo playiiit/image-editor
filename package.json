@@ -1,6 +1,6 @@
 {
   "name": "image-editor",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Image Editor",
   "repository": {
     "type": "git",
@@ -22,13 +22,12 @@
     "@electron/remote": "^2.0.8",
     "aspect-ratio": "^2.1.1",
     "aspectratio": "^2.2.2",
-    "cwebp": "^2.0.5",
     "electron-log": "^4.4.8",
     "fs": "0.0.1-security",
     "image-size": "^1.0.2",
     "jimp": "^0.16.1",
-    "powershell": "^2.3.2",
-    "uaup-js": "0.0.22"
+    "uaup-js": "0.0.22",
+    "webp-converter": "^2.3.3"
   },
   "devDependencies": {
     "electron": "^20.1.4"

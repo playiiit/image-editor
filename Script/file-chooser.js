@@ -1,9 +1,10 @@
 const { ipcRenderer } = require("electron");
 const path = require("path");
 const ipc = ipcRenderer;
-const PowerShell = require("powershell");
+const fs = require("fs");
 const Jimp = require("jimp");
 const sizeOf = require("image-size");
+const webp = require("webp-converter");
 
 const aspect = require("aspectratio");
 const ratio = require("aspect-ratio");
@@ -12,11 +13,14 @@ let files = "";
 let choosePath = "";
 let currentFileDimension = { width: 0, height: 0 };
 
+// Set app version
+var packageJson = require('./package.json');
+document.getElementById('app-version-label').innerText = 'Version ' + packageJson.version;
+
 /*
  * Drag and Drop Upload Image
  */
 const dropContainer = ByID("resources_file_path_uploader_drop_container");
-const uploader_com = ByID("resources_file_path_uploader_label");
 
 dropContainer.ondragover = dropContainer.ondragenter = function (evt) {
   evt.preventDefault();
@@ -37,6 +41,7 @@ dropContainer.ondrop = function (evt) {
   dropContainer.style.border = "1.5px dashed var(--border)";
 
   setImage(evt.dataTransfer.files);
+  files = evt.dataTransfer.files;
 };
 
 /**
@@ -48,6 +53,11 @@ ByID("resources_file_path").addEventListener("change", async (e) => {
   setImage(theFiles);
 });
 
+/**
+ * Set Image to Art Board
+ *
+ * @param {*} files
+ */
 function setImage(files) {
   ByID("preview-area-set").innerHTML = "";
   const dimensions = sizeOf(files[0].path);
@@ -130,26 +140,27 @@ ByID("generate_button").addEventListener("click", async (e) => {
 
         // Check if any error
         if (tempPath.error == null) {
-          let ps = new PowerShell(
-            await getWebpCommand(files, tempPath.path, fileName, fileQuality)
-          );
-
-          console.log(ps);
-
-          ps.on("end", (code) => {
-            console.log(code);
-
-            Message("File Successfully Saved", 1);
-            RemoveLoader("generate-button-txt", "Save File");
-            ByID("generate_button").disabled = false;
-          });
-          ps.on("error", (err) => {
-            console.log(err);
-
-            Message(err, 0);
-            RemoveLoader("generate-button-txt", "Save File");
-            ByID("generate_button").disabled = false;
-          });
+          try {
+            const result = webp.cwebp(
+              tempPath.path,
+              choosePath + "\\" + fileName + ".webp",
+              "-q 100"
+            );
+            result.then(async (response) => {
+              if (response != "") {
+                Message(response, 0);
+                RemoveLoader("generate-button-txt", "Save File");
+              } else {
+                Message("File Successfully Saved", 1);
+                RemoveLoader("generate-button-txt", "Save File");
+              }
+              ByID("generate_button").disabled = false;
+              // Delete temp file
+              console.log(await deleteTempFile(tempPath));
+            });
+          } catch (error) {
+            console.log(error);
+          }
         }
       } else {
         const returnData = executeJimp(
@@ -160,6 +171,7 @@ ByID("generate_button").addEventListener("click", async (e) => {
           fileName,
           fileQuality
         );
+
         if (returnData.error) {
           console.log(returnData.error);
           Message(returnData.error, 0);
@@ -262,7 +274,6 @@ function automaticScale(value, event) {
         currentFileDimension.height,
         currentFileDimension.width
       );
-      console.log(ratioCollect);
       var crop = aspect.crop(
         event.target.value,
         event.target.value,
@@ -291,3 +302,26 @@ ipcRenderer.on("message", function (event, text) {
   console.log("Message from updater:", text);
   console.log(event);
 });
+
+/**
+ * Delete Temp File
+ *
+ * @param {*} path
+ */
+function deleteTempFile(file) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (fs.existsSync(file.path)) {
+        fs.unlink(file.path, (err) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve("Deleted");
+          }
+        });
+      }else{
+        reject("Path not Exists:" + file);
+      }
+    }, 0);
+  });
+}
